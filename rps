@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <random>
+using namespace std;
+string comp(){
+    string move[]={"rock","paper","scissor"};
+    random_device rd;
+    uniform_int_distribution<int> dist(0,2);
+    string computer= move[dist(rd)];
+    cout <<computer;
+    return computer;
+}
+string play(){
+    string player;
+    cout<<"Put rock, paper or scissors:\n";
+    cin>> player;
+    if(player=="rock" || player=="paper" || player=="scissors"){
+        cout<<"\n"<<"____________"<<"\n"<<player<<"\n";
+    }else{
+        cout<<"invaled, try again";
+    }
+    return player;
+}
+
+void game(){
+    string player=play();
+    string computer=comp();
+    if (player==computer){
+        cout << "\ndraw";
+    }else{
+        if(player=="rock"&&computer=="scissors"){
+            cout<<"\nplayer is winner";
+        }else if(player=="paper"&&computer=="rock"){
+            cout<<"\nplayer is winner";
+        }else if(player=="scissors"&&computer=="paper"){
+            cout<<"\nplayer is winner";
+        }else{
+            cout<<"\ncomputer is winner";
+            }
+    }
+}
+
+
+int main() {
+    int again;
+    do{
+    game();
+    cout<<"\nwanna play again? write 1!\n";
+    cin>>again;
+    cout<<"\n_______________\n";
+    }while(again==1);
+    cout<<"thanks for playing";
+    return 0;
+}
