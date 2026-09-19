@@ -2,24 +2,28 @@
 #include <string>
 #include <random>
 using namespace std;
+
 string comp(){
-    string move[]={"rock","paper","scissor"};
+    string move[]={"rock","paper","scissors"};
     random_device rd;
     uniform_int_distribution<int> dist(0,2);
     string computer= move[dist(rd)];
     cout <<computer;
     return computer;
 }
+
 string play(){
     string player;
-    cout<<"Put rock, paper or scissors:\n";
-    cin>> player;
-    if(player=="rock" || player=="paper" || player=="scissors"){
-        cout<<"\n"<<"____________"<<"\n"<<player<<"\n";
-    }else{
-        cout<<"invaled, try again";
+    while(true){
+        cout<<"Put rock, paper or scissors:\n";
+        cin>> player;
+        if(player=="rock" || player=="paper" || player=="scissors"){
+            cout<<"\n"<<"____________"<<"\n"<<player<<"\n";
+            return player;
+        }else{
+            cout<<"invaled, try again\n";
+        }
     }
-    return player;
 }
 
 void game(){
@@ -36,18 +40,17 @@ void game(){
             cout<<"\nplayer is winner";
         }else{
             cout<<"\ncomputer is winner";
-            }
+        }
     }
 }
-
 
 int main() {
     int again;
     do{
-    game();
-    cout<<"\nwanna play again? write 1!\n";
-    cin>>again;
-    cout<<"\n_______________\n";
+        game();
+        cout<<"\nwanna play again? write 1!\n";
+        cin>>again;
+        cout<<"\n_______________\n";
     }while(again==1);
     cout<<"thanks for playing";
     return 0;
